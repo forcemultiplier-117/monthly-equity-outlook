@@ -78,7 +78,7 @@ def save_markdown(text: str, month: str, year: str, output_dir: Path) -> Path:
 def send_email(text: str, month: str, year: str):
     """Send outlook via email using SMTP. Requires env vars to be set."""
     smtp_host = os.environ.get("SMTP_HOST", "smtp.gmail.com")
-    smtp_port = int(os.environ.get("SMTP_PORT", "587"))
+    smtp_port = int(os.environ.get("SMTP_PORT") or "587")
     smtp_user = os.environ.get("SMTP_USER")
     smtp_pass = os.environ.get("SMTP_PASS")
     recipient = os.environ.get("OUTLOOK_RECIPIENT", smtp_user)
